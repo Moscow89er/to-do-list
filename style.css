@@ -60,10 +60,14 @@
     opacity: 0.2;
     transition: 1s linear 0.2s;
 }
+.task__list {
+    width: 100%;
+    height: 100%;
+}
 .task {
     width: 600px;
     height: 50px;
-    margin: 50px 0 0 50px;
+    margin: 10px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -81,6 +85,9 @@
     font-size: 26px;
     background-color: transparent;
     color: #fff;
+    border: none;
+    outline: none;
+    padding: 0;
 }
 .task__edit-button {
     width: 50px;
