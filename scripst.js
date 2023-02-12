@@ -1,24 +1,19 @@
 const tasks = [
-    'Почистить зубы',
-    'Позавтракать',
-    'Поработать над проектом',
-    'Погулять с Хито',
-    'Приступить к работе'
+    'Сделать адаптивную верстку',
+    'Добавить возможность переносить задачи в статус выполненных',
+    'Завести заявку на открытие счета от Александра(Гелиос)',
 ];
 const taskList = document.querySelector('.task__list');
 const form = document.querySelector('.form');
-const formInput = document.querySelector('.form__input');
 const deleteTask = (evt) => {
     evt.currentTarget.closest('.task').remove();
 };
 const addTask = (evt) => {
     evt.preventDefault();
+    const formInput = document.querySelector('.form__input');
     taskList.prepend(createTask(formInput.value));
     form.reset();
 };
-/*const saveTaskSubmit = () => {
-    
-};*/
 const createTask = (taskName) => {
     const taskTemplate = document.querySelector('#task__template').content;
     const taskElement = taskTemplate.cloneNode(true);
@@ -34,8 +29,7 @@ const createTask = (taskName) => {
         if (evt.key === 'Enter') {
          taskInput.setAttribute('disabled', 'disabled');
         }
-        console.log('кнопка нажата');
-     });
+    });
     return taskElement;
 };
 const renderTask = (taskName) => {
@@ -43,5 +37,10 @@ const renderTask = (taskName) => {
 };
 tasks.forEach((item) => {
     renderTask(item);
+});
+form.addEventListener('reset', () => {
+    setTimeout(() => {
+      toggleButtonState();
+}, 0);
 });
 form.addEventListener('submit', addTask);

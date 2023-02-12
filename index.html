@@ -11,9 +11,10 @@
        <h1 class="section__title">Список дел</h1>
     </section>
     <div class="container">
-        <form class="form">
-            <input type="text" placeholder="Дело" class="form__input">
-            <button type="submit" class="form__add-button">Добавить</button>
+        <form class="form"  novalidate>
+            <input id="task__input" type="text" placeholder="Дело" class="form__input" minlength="2" maxlength="220" required>
+            <button type="submit" class="form__add-button form__add-button_disabled" disabled>Добавить</button>
+            <span class="task__input-error form__input-error">Заполните поле</span>
         </form>
     </div>
     <ul class="task__list">
@@ -25,6 +26,7 @@
             </div>
         </template>
     </ul>
+    <script src="./validate.js"></script>
     <script src="./scripst.js"></script>
   </body>
 </html>
