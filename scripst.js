@@ -7,30 +7,35 @@ const tasks = [
 ];
 const taskList = document.querySelector('.task__list');
 const form = document.querySelector('.form');
+const formInput = document.querySelector('.form__input');
 const deleteTask = (evt) => {
     evt.currentTarget.closest('.task').remove();
 };
-const editTask = (evt) => {
-
-};
 const addTask = (evt) => {
     evt.preventDefault();
-    const formInput = document.querySelector('.form__input');
     taskList.prepend(createTask(formInput.value));
     form.reset();
 };
+/*const saveTaskSubmit = () => {
+    
+};*/
 const createTask = (taskName) => {
     const taskTemplate = document.querySelector('#task__template').content;
     const taskElement = taskTemplate.cloneNode(true);
-    const name = taskElement.querySelector('.task__name');
+    const taskInput = taskElement.querySelector('.task__input');
     const editButton = taskElement.querySelector('.task__edit-button');
     const deleteButton = taskElement.querySelector('.task__delete-button');
-
-    console.log(taskName);
-    name.value = taskName;
+    taskInput.value = taskName;
     deleteButton.addEventListener('click', deleteTask);
-
-    
+    editButton.addEventListener('click', () => {
+        taskInput.toggleAttribute('disabled');
+    });
+    taskInput.addEventListener('keydown', (evt) => {
+        if (evt.key === 'Enter') {
+         taskInput.setAttribute('disabled', 'disabled');
+        }
+        console.log('кнопка нажата');
+     });
     return taskElement;
 };
 const renderTask = (taskName) => {
